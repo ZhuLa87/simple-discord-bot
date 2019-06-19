@@ -57,7 +57,7 @@ client.on("message", message => {
   console.log(`${now} ${message.guild.name} ${message.channel.name} ${message.member.user.tag} : ${message.content}\n`);
   var log = `${now} ${message.guild.name} ${message.channel.name} ${message.member.user.tag} : ${message.content}\n`;
   fs.appendFile("../log.txt" ,log, 'utf-8', (err) => {});
-  if(message.content == `:zz:`){
+  if(message.content == `<:zz:590793410479259669>`){
     if(message.member.user.tag == `竺(｡>﹏<｡)#7540`){
       return;
     }else{
