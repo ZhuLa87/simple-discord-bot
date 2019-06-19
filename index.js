@@ -31,6 +31,7 @@ client.on("guildDelete", guild => {
   //client.user.setActivity(`Serving ${client.guilds.size} servers`);
 });
 
+/*
 client.on("guildMemberAdd", (member) => {
   let guild = member.guild;
   let memberTag = member.user.tag;
@@ -46,17 +47,23 @@ client.on("guildMemberRemove", (member) => {
     guild.systemChannel.send(memberTag + " has leave!");
   }
 });
+*/
 
 const fs = require('fs');
 
 client.on("message", message => {
   var today = new Date();
   var now = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate() + '(' + today.getHours() + ':' + today.getMinutes() + ')';
-  console.log(`${now} ${message.guild.name} ${message.channel.name} ${message.member.user.tag} : ${message.content}\n`);
+  console.log(`${now} ${message.guild.name} ${message.channel.name} ${message.member.user.tag} : ${message.content}\n`).catch(e => console.log(e));
   var log = `${now} ${message.guild.name} ${message.channel.name} ${message.member.user.tag} : ${message.content}\n`;
   fs.appendFile("../log.txt" ,log, 'utf-8', (err) => {});
-  if(message.content == `::`){
-    
+  if(message.content == `:zz:`){
+    if(!message.member.roles.some(r=>["Administrator", "Moderator"].includes(r.name)) ){
+      const fetched = await message.channel.fetchMessages({limit: 1});
+      message.channel.bulkDelete(fetched)
+        .catch(error => console.log(`Couldn't delete messages because of: ${error}`));
+      return message.reply("Sorry, you don't have permissions to use this!");
+    }
   }else if(message.content == `test`){
     message.channel.send(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`); 
   }else if(message.content == `<@!578076907975999498>`){
