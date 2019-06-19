@@ -46,7 +46,7 @@ client.on("message", message => {
   var now = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate() + '(' + today.getHours() + ':' + today.getMinutes() + ')';
   console.log(`${now} ${message.guild.name} ${message.channel.name} ${message.member.user.tag} : ${message.content}\n`);
   var log = `${now} ${message.guild.name} ${message.channel.name} ${message.member.user.tag} : ${message.content}\n`;
-  fs.appendFile("log.txt" ,log, 'utf-8', (err) => {});
+  fs.appendFile("../log.txt" ,log, 'utf-8', (err) => {});
   if(message.content == `::`){
     
   }else if(message.content == `test`){
