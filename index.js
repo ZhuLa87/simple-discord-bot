@@ -58,7 +58,7 @@ client.on("message", message => {
   var log = `${now} ${message.guild.name} ${message.channel.name} ${message.member.user.tag} : ${message.content}\n`;
   fs.appendFile("../log.txt" ,log, 'utf-8', (err) => {});
   if(message.content == `:zz:`){
-    if(!message.member.roles.some(r=>["Administrator", "Moderator"].includes(r.name)) ){
+    if(!message.member.user.tag == `竺竺#0643`){
       message.channel.bulkDelete(1)
         .catch(error => console.log(`Couldn't delete messages because of: ${error}`));
       return message.reply("Sorry, you don't have permissions to use this!");
