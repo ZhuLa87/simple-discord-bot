@@ -58,12 +58,6 @@ client.on("message", message => {
 
   if (message.author.bot) return;
 
-  function rand() {
-    var letters = ["0u0", "0.0", "Owo", "owO", "owo", "OwO", "OAO", "0A0", "030", "AwA", "QAQ", "QWQ", "ouo", ".w.", ".W.", ":D", ":)"];
-    var letter = letters[Math.floor(Math.random() * letters.length)];
-    return letter
-  }
-  
   if(message.content == `0u0` ||
   message.content == `0.0` ||
   message.content == `O.O` ||
@@ -76,7 +70,11 @@ client.on("message", message => {
   message.content == `AwA` ||
   message.content == `QAQ`
   ){
-    message.channel.send(`${rand()}`);
+    message.channel.send( () => {
+      var letters = ["0u0", "0.0", "Owo", "owO", "owo", "OwO", "OAO", "0A0", "030", "AwA", "QAQ", "QWQ", "ouo", ".w.", ".W.", ":D", ":)"];
+      var letter = letters[Math.floor(Math.random() * letters.length)];
+      return letter
+    });
   }
 });
 
