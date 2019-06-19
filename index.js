@@ -39,6 +39,14 @@ client.on("guildMemberAdd", (member) => {
   }
 });
 
+client.on("guildMemberRemove", (member) => {
+  let guild = member.guild;
+  let memberTag = member.user.tag;
+  if(guild.systemChannel){ 
+    guild.systemChannel.send(memberTag + " has leave!");
+  }
+});
+
 const fs = require('fs');
 
 client.on("message", message => {
