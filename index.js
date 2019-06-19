@@ -57,7 +57,7 @@ client.on("message", message => {
   }
 
   if (message.author.bot) return;
-
+/*
   if(message.content == `0u0` ||
   message.content == `0.0` ||
   message.content == `O.O` ||
@@ -70,14 +70,14 @@ client.on("message", message => {
   message.content == `AwA` ||
   message.content == `QAQ`
   ){
-    message.channel.send( () => {
-      var letters = ["0u0", "0.0", "Owo", "owO", "owo", "OwO", "OAO", "0A0", "030", "AwA", "QAQ", "QWQ", "ouo", ".w.", ".W.", ":D", ":)"];
+    message.channel.send( message => {
+      var letters = ["0u0", "0.0", "Owo", "owO", "owo", "OwO", "OAO", "0A0", "030", "AwA", "QAQ", "QWQ", "ouo", ".w.", ".W.", ":D", ":)","oWo"];
       var letter = letters[Math.floor(Math.random() * letters.length)];
-      return letter
+      return letter;
     });
   }
 });
-
+*/
 client.on("message", async message => {
   if(message.author.bot) return;
   if(message.content.indexOf(config.prefix) !== 0) return;
