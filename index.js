@@ -41,19 +41,30 @@ client.on("message", message => {
   console.log(`${now} ${message.guild.name} ${message.channel.name} ${message.member.user.tag} : ${message.content}\n`);
   var log = `${now} ${message.guild.name} ${message.channel.name} ${message.member.user.tag} : ${message.content}\n`;
   fs.appendFile("../log.txt" ,log, 'utf-8', (err) => {});
-  if(message.content == `<:zz:590793410479259669>`){
+
+  if(message.content.includes(`<:zz:590793410479259669>`) == true){
     if(message.member.user.tag == `竺(｡>﹏<｡)#7540`){
       return;
     }else{
       message.channel.bulkDelete(1)
         .catch(error => console.log(`Couldn't delete messages because of: ${error}`));
-      return message.reply("Sorry, you don't have permissions to use this!");
+      // return message.reply("Sorry, you don't have permissions to use this!");
     }
   }else if(message.content == `test`){
     message.channel.send(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`); 
   }else if(message.content == `<@!578076907975999498>`){
     message.reply(`怎麼了0u0`);
-  }else if(message.content == `0u0` ||
+  }
+
+  if (message.author.bot) return;
+
+  function rand() {
+    var letters = ["0u0", "0.0", "Owo", "owO", "owo", "OwO", "OAO", "0A0", "030", "AwA", "QAQ", "QWQ", "ouo", ".w.", ".W.", ":D", ":)"];
+    var letter = letters[Math.floor(Math.random() * letters.length)];
+    return letter
+  }
+  
+  if(message.content == `0u0` ||
   message.content == `0.0` ||
   message.content == `O.O` ||
   message.content == `Owo` ||
@@ -65,9 +76,7 @@ client.on("message", message => {
   message.content == `AwA` ||
   message.content == `QAQ`
   ){
-    message.channel.send(`ouo`);
-  }else if(message.content == `.w.`){
-    message.channel.send(`:D`);
+    message.channel.send(`${rand()}`);
   }
 });
 
