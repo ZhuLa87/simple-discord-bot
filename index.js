@@ -31,6 +31,14 @@ client.on("guildDelete", guild => {
   //client.user.setActivity(`Serving ${client.guilds.size} servers`);
 });
 
+client.on("guildMemberAdd", (member) => {
+  let guild = member.guild;
+  let memberTag = member.user.tag;
+  if(guild.systemChannel){ 
+    guild.systemChannel.send(memberTag + " has joined!");
+  }
+});
+
 const fs = require('fs');
 
 client.on("message", message => {
@@ -39,7 +47,9 @@ client.on("message", message => {
   console.log(`${now} ${message.guild.name} ${message.channel.name} ${message.member.user.tag} : ${message.content}\n`);
   var log = `${now} ${message.guild.name} ${message.channel.name} ${message.member.user.tag} : ${message.content}\n`;
   fs.appendFile("log.txt" ,log, 'utf-8', (err) => {});
-  if(message.content == `test`){
+  if(message.content == `::`){
+    
+  }else if(message.content == `test`){
     message.channel.send(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`); 
   }else if(message.content == `<@!578076907975999498>`){
     message.reply(`怎麼了0u0`);
