@@ -59,9 +59,7 @@ client.on("message", message => {
   fs.appendFile("../log.txt" ,log, 'utf-8', (err) => {});
   if(message.content == `:zz:`){
     if(!message.member.roles.some(r=>["Administrator", "Moderator"].includes(r.name)) ){
-      const deleteCount = 1;
-      const fetched = await message.channel.fetchMessages({limit:deleteCount});
-      message.channel.bulkDelete(fetched)
+      message.channel.bulkDelete(1)
         .catch(error => console.log(`Couldn't delete messages because of: ${error}`));
       return message.reply("Sorry, you don't have permissions to use this!");
     }
