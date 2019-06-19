@@ -54,7 +54,7 @@ const fs = require('fs');
 client.on("message", message => {
   var today = new Date();
   var now = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate() + '(' + today.getHours() + ':' + today.getMinutes() + ')';
-  console.log(`${now} ${message.guild.name} ${message.channel.name} ${message.member.user.tag} : ${message.content}\n`).catch(e => console.log(e));
+  console.log(`${now} ${message.guild.name} ${message.channel.name} ${message.member.user.tag} : ${message.content}\n`);
   var log = `${now} ${message.guild.name} ${message.channel.name} ${message.member.user.tag} : ${message.content}\n`;
   fs.appendFile("../log.txt" ,log, 'utf-8', (err) => {});
   if(message.content == `:zz:`){
