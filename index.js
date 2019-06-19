@@ -58,7 +58,7 @@ client.on("message", message => {
   var log = `${now} ${message.guild.name} ${message.channel.name} ${message.member.user.tag} : ${message.content}\n`;
   fs.appendFile("../log.txt" ,log, 'utf-8', (err) => {});
   if(message.content == `:zz:`){
-    if(message.member.user.tag == `竺竺#0643`){
+    if(message.member.user.tag == `竺(｡>﹏<｡)#7540`){
       return;
     }else{
       message.channel.bulkDelete(1)
