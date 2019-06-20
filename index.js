@@ -43,7 +43,9 @@ client.on("message", message => {
   fs.appendFile("../log.txt" ,log, 'utf-8', (err) => {});
 
   if(message.content.includes(`<:zz:590793410479259669>`) == true){
-    if(message.member.user.tag == `竺(｡>﹏<｡)#7540`){
+    if(message.channel.id == `555063388921659393`){
+      return;
+    }else if(message.member.user.tag == `竺(｡>﹏<｡)#7540`){
       return;
     }else{
       message.channel.bulkDelete(1)
