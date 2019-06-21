@@ -42,10 +42,10 @@ client.on("message", message => {
   var log = `${now} ${message.guild.name} ${message.channel.name} ${message.member.user.tag} : ${message.content}\n`;
   fs.appendFile("../log.txt" ,log, 'utf-8', (err) => {});
 
-  if(message.content.includes(`<:zz:590793410479259669>`) == true){
+  if(message.content.includes(`:590793410479259669>`) == true){
     if(message.channel.id == `555063388921659393`){
       return;
-    }else if(message.member.user.tag == `竺(｡>﹏<｡)#7540`){
+    }else if(message.member.user.id == `494481843333234728`){
       return;
     }else{
       message.channel.bulkDelete(1)
@@ -59,25 +59,13 @@ client.on("message", message => {
   }
 
   if (message.author.bot) return;
-/*
-  if(message.content == `0u0` ||
-  message.content == `0.0` ||
-  message.content == `O.O` ||
-  message.content == `Owo` ||
-  message.content == `owO` ||
-  message.content == `owo` ||
-  message.content == `OwO` ||
-  message.content == `OAO` ||
-  message.content == `030` ||
-  message.content == `AwA` ||
-  message.content == `QAQ`
-  ){
-    message.channel.send( message => {
-      var letters = ["0u0", "0.0", "Owo", "owO", "owo", "OwO", "OAO", "0A0", "030", "AwA", "QAQ", "QWQ", "ouo", ".w.", ".W.", ":D", ":)","oWo"];
-      var letter = letters[Math.floor(Math.random() * letters.length)];
-      return letter;
-    });
-  }*/
+  
+  let emoji = ['0.0','0u0','O.O','o.o','owo','Owo','owO','OwO','OWO','oWo','OAO','oAo','030','AwA','QwQ','QAQ','QWQ'];
+  
+  if (message.content.includes(emoji) == true )
+    let ran = emoji[Math.floor(Math.random()*items.length)];
+    message.channel.send(emoji[ran]);
+  }
 });
 
 client.on("message", async message => {
