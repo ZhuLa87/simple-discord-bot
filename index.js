@@ -63,7 +63,7 @@ client.on("message", message => {
   let emoji = ['0.0','0u0','O.O','o.o','owo','Owo','owO','OwO','OWO','oWo','OAO','oAo','030','AwA','QwQ','QAQ','QWQ'];
   
   if (emoji.includes(message.content) == true ){
-    var ran = emoji[Math.floor(Math.random()*items.length)];
+    var ran = emoji[Math.floor(Math.random()*emoji.length)];
     message.channel.send(emoji[ran]);
   }
 });
